@@ -1,0 +1,33 @@
+{% extends '::layout.html.twig' %}
+
+{% block content -%}
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>№</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Название</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Торговая площадка</th>
+                <td>{{ entity.codeMarket }}</td>
+            </tr>
+            <tr>
+                <th>Код компании</th>
+                <td>{{ entity.codeCompany }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('portfolio_show',{'id':entity.getPortfolio().getId()}) }}">
+        Назад в портфель
+    </a>
+
+    {{ form(delete_form) }}
+
+{% endblock %}

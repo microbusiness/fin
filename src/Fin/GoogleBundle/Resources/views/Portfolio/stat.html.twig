@@ -1,0 +1,44 @@
+{% extends '::layout.html.twig' %}
+
+{% block content -%}
+    <div>
+        {{ form(form) }}
+    </div>
+
+    <div class="raphael">
+        <div id="holder"></div>
+    </div>
+
+    <a href="{{ path('portfolio_show',{'id':stat.id}) }}">Вернуться к портфелю</a>
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    window.onload = function () {
+        var r = Raphael("holder"),
+                txtattr = { font: "12px sans-serif" };
+
+        var x = [ {% for statItem in stat.getStat() %} {{ loop.index }}, {% endfor %} ], y = [{% for key,statItem in stat.getStat() %} {{ stat.getAvgStatInDay(key) }}, {% endfor %} ];
+
+
+        r.text(160, 10, "Среднее значение портфеля за период").attr(txtattr);
+
+
+        r.linechart(10, 10, 700, 300, x, y).hoverColumn(function () {
+            this.set = r.set(
+                    r.circle(this.x, this.y[0])
+            );
+        }, function () {
+            this.set.remove();
+        });
+
+
+
+
+        // lines.lines[0].animate({"stroke-width": 6}, 1000);
+        // lines.symbols[0].attr({stroke: "#fff"});
+        // lines.symbols[0][1].animate({fill: "#f00"}, 1000);
+    };
+</script>
+{% endblock %}

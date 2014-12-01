@@ -1,0 +1,15 @@
+{% extends '::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Добавить компанию в портфель</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('portfolio_show', {'id':portfolio}) }}">
+            Назад в список
+        </a>
+    </li>
+</ul>
+{% endblock %}

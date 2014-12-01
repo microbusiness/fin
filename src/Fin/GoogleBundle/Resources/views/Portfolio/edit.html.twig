@@ -1,0 +1,12 @@
+{% extends '::layout.html.twig' %}
+
+{% block content -%}
+    <h1>Редактирование портфеля</h1>
+
+    {{ form(edit_form) }}
+
+        <a href="{{ path('portfolio') }}">
+            Назад в список портфелей
+        </a>
+
+{% endblock %}

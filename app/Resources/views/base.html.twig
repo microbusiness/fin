@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/fingoogle/css/main.css') }}">
+        <script src="{{ asset('bundles/fingoogle/js/raphael-min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/fingoogle/js/g.raphael-min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/fingoogle/js/g.line-min.js') }}" type="text/javascript"></script>
+        {% block stylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>

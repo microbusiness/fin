@@ -1,0 +1,50 @@
+{% extends "::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div style="width: 250px; height:200px; margin: 0 auto; padding: 5px; border: solid 1px khaki;position: relative">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+
+            <div style="margin: 5px; float: left">
+                <div style="float: left;width: 50px;">
+                    <label for="username">Логин</label>
+                </div>
+                <div style="float: left;width: 200px;">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                </div>
+            </div>
+
+            <div style="margin: 5px; float: left">
+                <div style="float: left;width: 50px;">
+                    <label for="password">Пароль</label>
+                </div>
+                <div style="float: left;width: 200px;">
+                    <input type="password" id="password" name="_password" required="required" />
+                </div>
+            </div>
+
+            <div style="margin: 5px; float: left;">
+                <div style="float: left;width: 250px;">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">Запомнить меня</label>
+                </div>
+            </div>
+
+            <div style="margin: 5px; float: left">
+                <div style="float: left;width: 250px;">
+                    <input type="submit" id="_submit" name="_submit" value="Войти" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock fos_user_content %}

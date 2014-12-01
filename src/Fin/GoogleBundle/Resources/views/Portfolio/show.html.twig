@@ -1,0 +1,20 @@
+{% extends "::layout.html.twig" %}
+
+{% block content -%}
+    <h1>Портфолио "{{ entity.name }}"</h1>
+    <a href="{{ path('portfolio_stat',{'id':entity.id}) }}"><img width="100px" src="{{ asset('bundles/fingoogle/image/chart.png') }}"></a>
+    {{ form(delete_form) }}
+    <p><a href="{{ path('portfolio') }}">
+            Назад к списку
+        </a>
+    </p>
+
+
+    <hr>
+
+    {{ render(controller('FinGoogleBundle:Company:index',{ 'portfolioId': entity.id } )) }}
+
+    <div><a href="{{ path('company_new', {'portfolioId':entity.id}) }}">Добавить новую компанию</a></div>
+
+
+{% endblock %}
