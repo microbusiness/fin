@@ -13,7 +13,7 @@ use DateInterval;
 /**
  * Portfolio controller.
  *
- * @Route("/portfolio")
+ * @Route("/portfolio", name="portfolio")
  */
 class PortfolioController extends Controller
 {
