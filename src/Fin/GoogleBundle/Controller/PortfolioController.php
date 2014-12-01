@@ -2,6 +2,9 @@
 
 namespace Fin\GoogleBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Fin\GoogleBundle\Form\FilterType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,9 +14,7 @@ use DateTime;
 use DateInterval;
 
 /**
- * Portfolio controller.
- *
- * @Route("/portfolio", name="portfolio")
+ * @Route("/portfolio")
  */
 class PortfolioController extends Controller
 {
