@@ -8,7 +8,7 @@ use Fin\GoogleBundle\Entity\Portfolio;
 /**
  * Company
  *
- * @ORM\Table()
+ * @ORM\Table(name="company")
  * @ORM\Entity(repositoryClass="Fin\GoogleBundle\Repository\CompanyRepository")
  */
 class Company

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Portfolio
  *
- * @ORM\Table()
+ * @ORM\Table(name="portfolio")
  * @ORM\Entity(repositoryClass="Fin\GoogleBundle\Repository\PortfolioRepository")
  */
 class Portfolio

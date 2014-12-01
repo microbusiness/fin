@@ -2,6 +2,7 @@
 After cloning GIT
 
 1. php composer.phar update
+2. Create database and set parameters in parameters.yml
 2. php app/console doctrine:schema:update --force
 3. php app/console fos:user:create
 
