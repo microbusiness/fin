@@ -267,7 +267,7 @@ class PortfolioController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Найти'));
+        //$form->add('submit', 'submit', array('label' => 'Найти'));
 
         return array(
             'form'=>$form->createView(),
