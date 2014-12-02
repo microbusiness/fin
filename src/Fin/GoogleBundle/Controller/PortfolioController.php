@@ -267,7 +267,7 @@ class PortfolioController extends Controller
             'method' => 'POST',
         ));
 
-        //$form->add('submit', 'submit', array('label' => 'Найти'));
+        $form->add('submit', 'submit', array('label' => 'Найти'));
 
         return array(
             'form'=>$form->createView(),
@@ -280,27 +280,31 @@ class PortfolioController extends Controller
      *
      * @Route("/{id}/stat", name="portfolio_find_stat")
      * @Method("POST")
-     * @Template()
+     * @Template("FinGoogleBundle:Portfolio:stat.html.twig")
      */
-    public function findStatAction($id)
+    public function findStatAction(Request $request,$id)
     {
         $googleStatService=$this->get('fin_google.service');
 
-        $end=new DateTime();
-        $begin=$end->sub(new DateInterval('P'.$end->format('d').'D'));
 
-        $stat=$googleStatService->getPorfolioFromGoogle($id,$begin,$end);
-
-        $form = $this->createForm(new FilterType(), array(), array(
+        $form = $this->createForm(new FilterType(), array('begin'=>null,'end'=>null), array(
             'action' => $this->generateUrl('portfolio_find_stat', array('id' => $id)),
             'method' => 'POST',
         ));
-
         $form->add('submit', 'submit', array('label' => 'Найти'));
 
+        $form->handleRequest($request);
+
+        $data=$form->getData();
+        $stat=$googleStatService->getPorfolioFromGoogle($id,$data['begin'],$data['end']);
+
+
         return array(
-            'form'=>$form,
+            'form'=>$form->createView(),
             'stat'      => $stat,
         );
+
+
+
     }
 }
