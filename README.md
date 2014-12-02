@@ -13,7 +13,7 @@ pass - 111111
 Timeline:
 
 1. Create standart database scheme and modules - 4 hours
-2. Analise api Goole finance - 2 hours
+2. Analize api Google finance - 2 hours
 3. Find js module for diagramm (I havn't expirience) - 2 hours
 4. Small fixes - 2 hours
 
