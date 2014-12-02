@@ -1,6 +1,7 @@
 {% extends '::layout.html.twig' %}
 
 {% block content -%}
+    <a href="{{ path('portfolio_show',{'id':stat.id}) }}">Вернуться к портфелю</a>
     <div>
         {{ form(form) }}
     </div>
@@ -9,7 +10,25 @@
         <div id="holder"></div>
     </div>
 
-    <a href="{{ path('portfolio_show',{'id':stat.id}) }}">Вернуться к портфелю</a>
+    <table>
+        <tr>
+            <th>Дата</th>
+            {% for cm in stat.getCompany() %}
+                <th>{{ cm.getCodeCompany() }}</th>
+            {% endfor %}
+            <th>Среднее</th>
+        </tr>
+        {% for key,statItem in stat.getStat() %}
+            <tr>
+                <td>{{ key }}</td>
+                {% for company in statItem  %}
+                    <td>{{ company['open'] }}</td>
+                {% endfor %}
+                <td>{{ stat.getAvgStatInDay(key)}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
 
 {% endblock %}
 
@@ -22,7 +41,7 @@
         var x = [ {% for statItem in stat.getStat() %} {{ loop.index }}, {% endfor %} ], y = [{% for key,statItem in stat.getStat() %} {{ stat.getAvgStatInDay(key) }}, {% endfor %} ];
 
 
-        r.text(160, 10, "Среднее значение портфеля за период").attr(txtattr);
+        r.text(160, 10, "Среднее значение портфеля за период по датам (на момент открытия)").attr(txtattr);
 
 
         r.linechart(10, 10, 700, 300, x, y).hoverColumn(function () {
