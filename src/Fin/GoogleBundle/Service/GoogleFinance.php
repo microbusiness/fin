@@ -45,7 +45,7 @@ class GoogleFinance {
             }
         }
 
-        $portfolio->setStat($portfolioArray);
+        $portfolio->setStat(array_reverse($portfolioArray));
 
         return $portfolio;
 
